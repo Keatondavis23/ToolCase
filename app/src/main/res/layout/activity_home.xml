@@ -1,7 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:orientation="vertical"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="#F0F0F0">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tool Options"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/button_level"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level"
+        android:textAllCaps="false"
+        android:background="@drawable/button_background"
+        android:layout_marginBottom="16dp"/>
+
+
+    <Button
+        android:id="@+id/discoverButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:text="Discover Devices"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/button_range_finder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Range Finder (Bluetooth Required)"
+        android:textAllCaps="false"
+        android:background="@drawable/button_background"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/button_temperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thermometer (Bluetooth Required)"
+        android:textAllCaps="false"
+        android:background="@drawable/button_background"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/dataView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bluetooth Data Will Appear Here"
+        android:layout_centerInParent="true"
+        android:textSize="18sp"/>
 
 </LinearLayout>
+
+

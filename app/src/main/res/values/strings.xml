@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="name">Bubble</string>
+    <string name="name">Tool Case</string>
     <string name="reset">Reset</string>
     <string name="not_supported">Orientation not supported</string>
     <string name="calibrate">Calibrate</string>

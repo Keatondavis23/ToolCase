@@ -2,7 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.woheller69.level">
 
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE"/>
+
+    <uses-feature android:name="android.hardware.bluetooth" android:required="true"/>
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
+    <uses-feature android:name="android.hardware.location.network" android:required="false"/>
+
+
     <uses-feature
         android:name="android.hardware.sensor.accelerometer"
         android:required="true" />
@@ -14,22 +29,35 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/name">
 
+        <!-- New Home Activity -->
         <activity
-            android:name="org.woheller69.level.Level"
-            android:hardwareAccelerated="true"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:name=".HomeActivity"
+            android:label="Tool Case"
+            android:exported="true"> <!-- This line is added -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+
+        <!-- Level Activity without the LAUNCHER category -->
+        <activity
+            android:name="org.woheller69.level.Level"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:exported="false"> <!-- This line is added/updated -->
+            <!-- No intent-filter here -->
+        </activity>
+
+
+        <!-- Settings Activity -->
         <activity
             android:name=".SettingsActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".Level" />
+            android:parentActivityName=".HomeActivity" /> <!-- Updated parentActivityName -->
 
     </application>
 
 </manifest>
+
