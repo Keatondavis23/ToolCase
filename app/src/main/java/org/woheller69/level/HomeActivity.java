@@ -73,6 +73,7 @@ public class HomeActivity extends AppCompatActivity implements BluetoothManager.
         // Initialize TextView and other UI elements
         dataView = findViewById(R.id.dataView); // Make sure you have a TextView with this ID in your layout
 
+
         // Attempt to connect to the specific device
         bluetoothManager.connectToSpecificDevice(SPECIFIC_DEVICE_NAME, SPECIFIC_DEVICE_ADDRESS);
 
@@ -83,6 +84,21 @@ public class HomeActivity extends AppCompatActivity implements BluetoothManager.
             startActivity(intent);
         });
 
+        //RangeFinder Button
+        Button buttonRangeFinder = findViewById(R.id.button_range_finder);
+        buttonRangeFinder.setOnClickListener(v -> {
+                    Intent intent = new Intent(HomeActivity.this, RangeFinder.class);
+                    startActivity(intent);
+        });
+
+        //Thermometer Button
+        Button thermometer = findViewById(R.id.button_temperature);
+        thermometer.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, Thermometer.class);
+            startActivity(intent);
+        });
+
+        //Discover Devices Button
         Button discoverButton = findViewById(R.id.discoverButton);
         discoverButton.setOnClickListener(new View.OnClickListener() {
             @Override

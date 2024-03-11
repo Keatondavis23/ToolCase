@@ -49,7 +49,9 @@
             android:exported="false"> <!-- This line is added/updated -->
             <!-- No intent-filter here -->
         </activity>
-
+        <activity android:name=".RangeFinder" />
+        <activity android:name=".Thermometer" />
+        <activity android:name=".DiscoverDevices" />
 
         <!-- Settings Activity -->
         <activity

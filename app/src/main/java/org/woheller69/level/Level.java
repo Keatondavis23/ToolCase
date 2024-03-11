@@ -28,8 +28,8 @@ import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
-import org.woheller69.level.orientation.Orientation;
 import org.woheller69.level.orientation.OrientationListener;
+import org.woheller69.level.orientation.Orientation;
 import org.woheller69.level.orientation.OrientationProvider;
 import org.woheller69.level.util.PreferenceHelper;
 import org.woheller69.level.view.LevelView;
