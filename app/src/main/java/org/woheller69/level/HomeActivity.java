@@ -9,9 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import android.content.Intent;
 
@@ -22,7 +24,7 @@ public class HomeActivity extends AppCompatActivity implements BluetoothManager.
     private static final String TAG = "HomeActivity";
     private static final int REQUEST_CODE_BLUETOOTH_CONNECT = 1;
     private BluetoothManager bluetoothManager;
-    private TextView dataView;
+    private CardView dataView;
 
     //private static final String SPECIFIC_DEVICE_NAME = "Pico"; // replace with actual device name
     //private static final String SPECIFIC_DEVICE_ADDRESS = "28:CD:C1:10:B7:5E"; // replace with actual MAC address
@@ -45,7 +47,7 @@ public class HomeActivity extends AppCompatActivity implements BluetoothManager.
                 byte[] readBuf = (byte[]) msg.obj;
                 // Construct a string from the valid bytes in the buffer
                 String receivedText = new String(readBuf, 0, msg.arg1);
-                dataView.setText(receivedText); // Update TextView with the received text
+//                dataView.setText(receivedText); // Update TextView with the received text
                 return true;
             }
             return false;
@@ -71,35 +73,43 @@ public class HomeActivity extends AppCompatActivity implements BluetoothManager.
 
 
         // Initialize TextView and other UI elements
-        dataView = findViewById(R.id.dataView); // Make sure you have a TextView with this ID in your layout
+//        dataView = findViewById(R.id.dataView); // Make sure you have a TextView with this ID in your layout
 
 
         // Attempt to connect to the specific device
         bluetoothManager.connectToSpecificDevice(SPECIFIC_DEVICE_NAME, SPECIFIC_DEVICE_ADDRESS);
 
         // Set an OnClickListener to define what should happen when the Button is clicked
-        Button buttonLevel = findViewById(R.id.button_level);
-        buttonLevel.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, Level.class);
-            startActivity(intent);
+//        CardView buttonLevel = findViewById(R.id.button_level);
+//        buttonLevel.setOnClickListener(v -> {
+//            Intent intent = new Intent(HomeActivity.this, Level.class);
+//            startActivity(intent);
+//        });
+        ImageView cardLevel = findViewById(R.id.button_level);
+        cardLevel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, Level.class);
+                startActivity(intent);
+            }
         });
 
         //RangeFinder Button
-        Button buttonRangeFinder = findViewById(R.id.button_range_finder);
+        ImageView buttonRangeFinder = findViewById(R.id.button_range_finder);
         buttonRangeFinder.setOnClickListener(v -> {
                     Intent intent = new Intent(HomeActivity.this, RangeFinder.class);
                     startActivity(intent);
         });
 
         //Thermometer Button
-        Button thermometer = findViewById(R.id.button_temperature);
+        ImageView thermometer = findViewById(R.id.button_temperature);
         thermometer.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, Thermometer.class);
             startActivity(intent);
         });
 
         //Discover Devices Button
-        Button discoverButton = findViewById(R.id.discoverButton);
+        ImageView discoverButton = findViewById(R.id.discoverButton);
         discoverButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

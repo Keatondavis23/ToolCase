@@ -6,6 +6,9 @@
     <color name="silver">#FF888888</color>
     <color name="black_reflect">#FF666666</color>
     <color name="translucent">#00FFFFFF</color>
+    <color name="blue">#1f54db</color>
+    <color name="red">#bd2626</color>
+    <color name="green">#0fd159</color>
     <!-- Level -->
     <color name="level_liquid_reflect">#FFE9DF00</color>
     <color name="level_border_reflect">@color/black_reflect</color>
