@@ -110,9 +110,9 @@ public class Level extends AppCompatActivity implements OrientationListener {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        menu.findItem(R.id.menu_ruler).setChecked(rulerView!=null);
-        menu.findItem(R.id.menu_ruler).setIcon(rulerView==null ? R.drawable.ic_ruler : R.drawable.ic_bubble);
-        menu.findItem(R.id.menu_settings).setVisible(rulerView==null);
+        //menu.findItem(R.id.menu_ruler).setChecked(rulerView!=null);
+        //menu.findItem(R.id.menu_ruler).setIcon(rulerView==null ? R.drawable.ic_ruler : R.drawable.ic_bubble);
+        //menu.findItem(R.id.menu_settings).setVisible(rulerView==null);
         if (menu instanceof MenuBuilder) {
             ((MenuBuilder) menu).setOptionalIconsVisible(true);
         }
@@ -121,9 +121,9 @@ public class Level extends AppCompatActivity implements OrientationListener {
 
     @Override
     public void onPanelClosed(int featureId, Menu menu) {
-        if (rulerView != null) {
-            setFullscreenMode();
-        }
+        //if (rulerView != null) {
+        //    setFullscreenMode();
+        //}
 
         super.onPanelClosed(featureId, menu);
     }
@@ -207,13 +207,13 @@ public class Level extends AppCompatActivity implements OrientationListener {
         } else if (item.getItemId() == R.id.menu_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
             return true;
-        } else if (item.getItemId() == R.id.menu_about) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/woheller69/level")));
-            recreate(); //fix strange action bar position when coming from ruler
-            return true;
-        } else if (item.getItemId() == R.id.menu_ruler) {
-            showRuler(!item.isChecked());
-        }
+        //} else if (item.getItemId() == R.id.menu_about) {
+        //    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/woheller69/level")));
+        //    recreate(); //fix strange action bar position when coming from ruler
+        //    return true;
+        } //else if (item.getItemId() == R.id.menu_ruler) {
+            //showRuler(!item.isChecked());
+        //}
         return false;
     }
 
@@ -263,7 +263,7 @@ public class Level extends AppCompatActivity implements OrientationListener {
     @Override
     protected void onPause() {
         super.onPause();
-        showRuler(false);
+        //showRuler(false);
         if (provider.isListening()) {
             provider.stopListening();
         }

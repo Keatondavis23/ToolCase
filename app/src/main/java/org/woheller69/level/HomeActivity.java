@@ -26,10 +26,8 @@ public class HomeActivity extends AppCompatActivity implements BluetoothManager.
     private BluetoothManager bluetoothManager;
     private CardView dataView;
 
-    //private static final String SPECIFIC_DEVICE_NAME = "Pico"; // replace with actual device name
-    //private static final String SPECIFIC_DEVICE_ADDRESS = "28:CD:C1:10:B7:5E"; // replace with actual MAC address
-    private static final String SPECIFIC_DEVICE_NAME = "TREKZ Titanium by AfterShokz"; // replace with actual device name
-    private static final String SPECIFIC_DEVICE_ADDRESS = "20:74:CF:1F:52:99"; // replace with actual MAC address
+    private static final String SPECIFIC_DEVICE_NAME = "Pico"; // replace with actual device name
+    private static final String SPECIFIC_DEVICE_ADDRESS = "28:CD:C1:10:B7:5E"; // replace with actual MAC address
 
     @Override
     public void requestBluetoothPermissions() {
