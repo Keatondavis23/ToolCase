@@ -42,4 +42,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1" //needed due to duplicate class error
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1" //needed due to duplicate class error
     implementation "androidx.cardview:cardview:1.0.0" // cardview dependency
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0' // Check for the latest version on the OkHttp GitHub
 }
