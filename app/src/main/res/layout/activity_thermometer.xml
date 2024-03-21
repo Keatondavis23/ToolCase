@@ -11,7 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Getting Temperature"
+        android:gravity="center_horizontal"
+        android:text="Getting Temperature \n(Restart app if longer than 10 seconds)"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="20sp" />
 
