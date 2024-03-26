@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshooting_instructions">
+    <![CDATA[
+        <b>How to Connect to the Case:</b><br>
+        1. Make sure your device\'s Bluetooth is on.<br>
+        2. Open the case next to your device.<br>
+        3. Wait for the device to detect the case.<br>
+        4. Follow the on-screen instructions to complete the connection.<br>
+        If you encounter issues, restart your device and try again.
+    ]]>
+    </string>
+
+
+</resources>
