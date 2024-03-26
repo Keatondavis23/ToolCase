@@ -6,14 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".Thermometer">
 
+    <View
+        android:id="@+id/top_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_view"
+        />
+
     <TextView
         android:id="@+id/temperatureJSONData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center_horizontal"
-        android:text="Getting Temperature \n(Restart app if longer than 10 seconds)"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="20sp" />
+        android:text="Temperature: --"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="35dp"
+        android:layout_below="@+id/top_view"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/temperatureJSONData"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/celsiusButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Celsius"
+            android:textSize="16sp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/customColor"
+            android:textColor="@android:color/white"
+            android:elevation="4dp"
+            android:layout_marginRight="8dp" />
+
+        <Button
+            android:id="@+id/fahrenheitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fahrenheit"
+            android:textSize="16sp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/customColor"
+            android:textColor="@android:color/white"
+            android:elevation="4dp"
+            android:layout_marginRight="8dp" />
+
+        <Button
+            android:id="@+id/kelvinButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kelvin"
+            android:textSize="16sp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:backgroundTint="@color/customColor"
+            android:textColor="@android:color/white"
+            android:elevation="4dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temperature"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
 
 </RelativeLayout>
