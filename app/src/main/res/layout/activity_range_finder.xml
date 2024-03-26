@@ -6,15 +6,98 @@
     android:layout_height="match_parent"
     tools:context=".RangeFinder">
 
+    <View
+        android:id="@+id/top_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_view"
+        />
+
     <TextView
         android:id="@+id/rangeFinderJSONData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         android:gravity="center_horizontal"
-        android:text="Getting Distance \n(Restart app if longer than 10 seconds)"
+        android:text="Getting Distance\n(Restart app if longer than 10 seconds)"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="20sp"
+        android:layout_below="@+id/top_view"/>
+
+    <TextView
+        android:id="@+id/width"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_centerHorizontal="true"
+        android:text="Width: "
+        android:textSize="20sp"
+        android:layout_below="@+id/rangeFinderJSONData"/>
+
+    <TextView
+        android:id="@+id/length"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_centerHorizontal="true"
+        android:text="Length: "
+        android:textSize="20sp"
+        android:layout_below="@+id/width" />
+
+    <TextView
+        android:id="@+id/area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/length"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Area: "
         android:textSize="20sp" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/widthButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/area"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Width"
+        android:textSize="16sp"/>
 
+    <Button
+        android:id="@+id/lengthButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/widthButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Length"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lengthButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Calculate Area"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Range Finder"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+
+
+</RelativeLayout>
