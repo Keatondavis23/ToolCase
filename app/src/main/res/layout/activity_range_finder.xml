@@ -20,7 +20,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:gravity="center_horizontal"
-        android:text="Getting Distance\n(Restart app if longer than 10 seconds)"
+        android:text="@string/getting_distance_n_restart_app_if_longer_than_10_seconds"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="20sp"
         android:layout_below="@+id/top_view"/>
@@ -48,50 +48,101 @@
         android:layout_below="@+id/width" />
 
     <TextView
-        android:id="@+id/area"
+        android:id="@+id/height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/length"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:text="Height: "
+        android:textSize="20sp"
+        android:layout_below="@+id/length" />
+
+    <TextView
+        android:id="@+id/areaTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="12dp"
         android:text="Area: "
         android:textSize="20sp" />
+    <LinearLayout
+        android:id="@+id/btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/unitRadioGroup"
+        android:gravity="center">
+        <Button
+            android:id="@+id/widthButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:text="@string/width"
+            android:textSize="16sp"
+            android:layout_marginEnd="12dp" />
 
-    <Button
-        android:id="@+id/widthButton"
+        <Button
+            android:id="@+id/lengthButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:text="@string/length"
+            android:textSize="16sp"
+            android:layout_marginEnd="12dp" />
+        <Button
+            android:id="@+id/heightButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:text="@string/height"
+            android:textSize="16sp"
+            android:layout_marginEnd="12dp" />
+
+        <Button
+            android:id="@+id/calculateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calculate_area"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/unitRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/area"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Width"
-        android:textSize="16sp"/>
-
-    <Button
-        android:id="@+id/lengthButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/widthButton"
+        android:layout_below="@+id/areaTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="Length"
-        android:textSize="16sp"/>
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/calculateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lengthButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Calculate Area"
-        android:textSize="16sp"/>
+        <RadioButton
+            android:id="@+id/squareFeetRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/square_feet"/>
+
+        <RadioButton
+            android:id="@+id/cubicFeetRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cubic_feet"/>
+
+        <RadioButton
+            android:id="@+id/yardRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yard"/>
+    </RadioGroup>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Range Finder"
+        android:text="@string/range_finder"
         android:textColor="@color/white"
         android:textSize="36sp"
         android:textStyle="bold"

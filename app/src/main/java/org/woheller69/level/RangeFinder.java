@@ -3,8 +3,10 @@ package org.woheller69.level;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,15 +24,20 @@ import okhttp3.Response;
 
 public class RangeFinder extends AppCompatActivity {
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
-    private final Handler mainThreadHandler = new Handler(getMainLooper());
+    private final Handler mainThreadHandler = new Handler(Looper.getMainLooper());
 
+    private TextView areaTextView;
     private static final String TAG = "RangeFinder";
     private Handler handler;
 
+    private double area = 0.0;
+    private String selectedUnit = "";
     private TextView rangeData;
 
     private double width = 0.0;
     private double length = 0.0;
+
+    private double height = 0.0;
 
     private final Runnable fetchDataRunnable = new Runnable() {
         @Override
@@ -60,6 +67,7 @@ public class RangeFinder extends AppCompatActivity {
         }
     };
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,17 +76,32 @@ public class RangeFinder extends AppCompatActivity {
         rangeData = findViewById(R.id.rangeFinderJSONData);
         Button widthButton = findViewById(R.id.widthButton);
         Button lengthButton = findViewById(R.id.lengthButton);
-        Button calcAreaButton = findViewById(R.id.calculateButton);
+        Button heightButton = findViewById(R.id.heightButton);
+        areaTextView = findViewById(R.id.areaTextView);
+        RadioGroup unitRadioGroup = findViewById(R.id.unitRadioGroup);
 
         widthButton.setOnClickListener(v -> storeWidth());
         lengthButton.setOnClickListener(v -> storeLength());
-        calcAreaButton.setOnClickListener(v -> calculateArea());
+        heightButton.setOnClickListener(v -> storeHeight());
+        unitRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            switch (checkedId) {
+                case R.id.squareFeetRadioButton:
+                    selectedUnit = "Square Feet";
+                    break;
+                case R.id.cubicFeetRadioButton:
+                    selectedUnit = "Cubic Feet";
+                    break;
+                case R.id.yardRadioButton:
+                    selectedUnit = "Yard";
+                    break;
+            }
+            updateAreaTextView(); // Update area TextView when unit is selected
+        });
 
         handler = new Handler(message -> {
             if (message.what == MessageConstants.MESSAGE_READ) {
                 byte[] readBuf = (byte[]) message.obj;
                 String receivedData = new String(readBuf, 0, message.arg1);
-                updateUI(receivedData);
             }
             return true;
         });
@@ -101,14 +124,35 @@ public class RangeFinder extends AppCompatActivity {
     }
 
     @SuppressLint("SetTextI18n")
-    private void calculateArea() {
-        double area = width * length;
-        TextView areaTextView = findViewById(R.id.area);
-        areaTextView.setText("Area: " + area);
+    private void storeHeight() {
+        height = Double.parseDouble(rangeData.getText().toString().split(":")[1].trim());
+        TextView lengthTextView = findViewById(R.id.height);
+        lengthTextView.setText("Height: " + height);
     }
 
-    private void updateUI(String data) {
-        // Update UI elements with received data
+    @SuppressLint("SetTextI18n")
+    private void updateAreaTextView() {
+        // Check if width and length (and height for cubic feet or yard) are available
+        if (width != 0 && length != 0 && (selectedUnit.equals("Square Feet") || (selectedUnit.equals("Cubic Feet") || selectedUnit.equals("Yard")) && height != 0)) {
+            // Calculate area based on selected unit
+            switch (selectedUnit) {
+                case "Square Feet":
+                    area = width * length; // Calculate area in square feet
+                    areaTextView.setText("Area: " + area + " " + getResources().getString(R.string.square_feet_symbol)); // Update area TextView with square feet symbol
+                    break;
+                case "Cubic Feet":
+                    area = width * length * height; // Calculate area in cubic feet
+                    areaTextView.setText("Area: " + area + " " + getResources().getString(R.string.cubic_feet_symbol));
+                    break;
+                case "Yard":
+                    area = width * length * height / 27; // Calculate area in yards (assuming height in feet)
+                    areaTextView.setText("Area: " + area + " " + getResources().getString(R.string.yard_symbol)); // Update area TextView with yard symbol
+                    break;
+            }
+        } else {
+            // Display a message indicating that all dimensions are required
+            areaTextView.setText("Please provide width, length" + (selectedUnit.equals("Cubic Feet") || selectedUnit.equals("Yard") ? ", and height" : "") + " to calculate area.");
+        }
     }
 
     private interface MessageConstants {

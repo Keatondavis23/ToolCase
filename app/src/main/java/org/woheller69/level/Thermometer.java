@@ -67,7 +67,6 @@ public class Thermometer extends AppCompatActivity {
             if (message.what == MessageConstants.MESSAGE_READ) {
                 byte[] readBuf = (byte[]) message.obj;
                 String receivedData = new String(readBuf, 0, message.arg1);
-                updateUI(receivedData);
             }
             return true;
         });
@@ -76,11 +75,9 @@ public class Thermometer extends AppCompatActivity {
 
         Button celsiusButton = findViewById(R.id.celsiusButton);
         Button fahrenheitButton = findViewById(R.id.fahrenheitButton);
-        Button kelvinButton = findViewById(R.id.kelvinButton);
 
         celsiusButton.setOnClickListener(v -> setCurrentUnit("Celsius"));
         fahrenheitButton.setOnClickListener(v -> setCurrentUnit("Fahrenheit"));
-        kelvinButton.setOnClickListener(v -> setCurrentUnit("Kelvin"));
     }
 
     @SuppressLint("SetTextI18n")
@@ -95,24 +92,13 @@ public class Thermometer extends AppCompatActivity {
                 return "Temperature: " + temperature + " °C";
             case "Fahrenheit":
                 return "Temperature: " + celsiusToFahrenheit(temperature) + " °F";
-            case "Kelvin":
-                return "Temperature: " + celsiusToKelvin(temperature) + " K";
             default:
                 return "Unknown temperature unit";
         }
     }
 
-    private void updateUI(String data) {
-        // Update your UI elements here with the received data
-        // Example: textView.setText(data);
-    }
-
     private double celsiusToFahrenheit(double celsius) {
         return (celsius * 9 / 5) + 32;
-    }
-
-    private double celsiusToKelvin(double celsius) {
-        return celsius + 273.15;
     }
 
     private interface MessageConstants {
