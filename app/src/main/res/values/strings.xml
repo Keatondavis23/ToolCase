@@ -38,8 +38,11 @@
     <string name="yard">Yard</string>
     <string name="range_finder">Range Finder</string>
     <string name="width">Width</string>
-    <string name="square_feet_symbol">&#x00B2;</string> <!-- Unicode for superscript 2 (²) for square feet -->
-    <string name="cubic_feet_symbol">&#x00B3;</string> <!-- Unicode for superscript 3 (³) for cubic feet -->
+    <string name="square_symbol">&#x00B2;</string> <!-- Unicode for superscript 2 (²) for square -->
+    <string name="cubic_symbol">&#x00B3;</string> <!-- Unicode for superscript 3 (³) for cubic -->
     <string name="yard_symbol">yd</string> <!-- Symbol for yard -->
     <string name="getting_distance_n_restart_app_if_longer_than_10_seconds">Getting Distance\n(Restart app if longer than 10 seconds)</string>
+    <string name="ft_string_square_symbol">Calculate ft&#x00B2;</string>
+    <string name="ft_string_cubic_symbol">Calculate ft&#x00B3;</string>
+    <string name="yd_string_cubic_symbol">calculate yd&#x00B3;</string>
 </resources>
