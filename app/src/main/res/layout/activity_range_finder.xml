@@ -13,17 +13,49 @@
         android:background="@drawable/bg_view"
         />
 
+    <LinearLayout
+        android:id="@+id/btn_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/top_view"
+        android:gravity="center">
+
+        <!-- New Button 1 -->
+        <Button
+            android:id="@+id/newButton1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Feet"
+            android:textSize="16sp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"/>
+
+        <!-- New Button 2 -->
+        <Button
+            android:id="@+id/newButton2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Yards"
+            android:textSize="16sp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"/>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/rangeFinderJSONData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
-        android:text="@string/getting_distance_n_restart_app_if_longer_than_10_seconds"
+        android:text="Range: --"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="20sp"
-        android:layout_below="@+id/top_view"/>
+        android:layout_below="@+id/btn_layout1"/>
 
     <TextView
         android:id="@+id/widthView"
@@ -68,8 +100,9 @@
         android:layout_marginBottom="12dp"
         android:text="Area: "
         android:textSize="20sp" />
+
     <LinearLayout
-        android:id="@+id/btn_layout"
+        android:id="@+id/btn_layout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -108,42 +141,38 @@
             android:layout_marginRight="8dp" />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/btn_layout1"
+        android:id="@+id/btn_layout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/btn_layout"
+        android:layout_below="@+id/btn_layout2"
         android:gravity="center">
 
         <Button
-            android:id="@+id/calculateSquareFeet"
+            android:id="@+id/calculateArea"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
-            android:text="@string/ft_string_square_symbol"
-            android:textSize="12sp"
-            android:layout_marginRight="8dp" />
+            android:text="Calculate Area"
+            android:textSize="16sp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="50dp"/>
 
         <Button
-            android:id="@+id/calculateCubicFeet"
+            android:id="@+id/calculateVolume"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
-            android:text="@string/ft_string_cubic_symbol"
-            android:textSize="12sp"
-            android:layout_marginRight="8dp" />
+            android:text="Calculate Volume"
+            android:textSize="16sp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="25dp"/>
 
-        <Button
-            android:id="@+id/calculateCubicYard"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/yd_string_cubic_symbol"
-            android:textSize="12sp"/>
     </LinearLayout>
+
 
 
     <!--    <RadioGroup-->

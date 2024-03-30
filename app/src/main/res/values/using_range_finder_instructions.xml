@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="using_range_finder_instructions">
+    <![CDATA[
+        <b>How to use the Range Finder:</b><br>
+        1. Select the unit of measurement you would like to use. If no unit is selected it will default to feet. <br>
+        *Be aware it can take up to 5 seconds for the unit of measurement to change on screen*<br>
+        2. You can save values to the width, length and height variables by just pressing each button accordingly
+        to save the current range as the variable. If you want to change the value just repress the button and it
+        will save the current range being measured as the new value. <br>
+        3. To calculate the area you must have a value saved in both the width and length positions. They must both
+        be in the same unit of measurement, meaning both feet or both yards.
+        4. To calculate the volume you must have a value saved in width, length and height positions. They must all
+        be in the same unit of measurement, meaning all in feet or yards.
+
+    ]]>
+    </string>
+
+
+</resources>

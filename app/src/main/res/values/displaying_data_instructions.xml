@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="displaying_data_instructions">
+    <![CDATA[
+        <b>How to Display Data:</b><br>
+        1. Make sure your device is connected to the ToolCase. If not please see previous instructions.<br>
+        2. The date will then automatically display in the Range Finder and Thermometer pages.<br>
+        If you encounter issues, restart your app and try again.<br>
+        <br>
+        <b>TroubleShooting</b><br>
+        <br>
+        <b>Data never displays:</b><br>
+        If either the Range Finder or thermometer data is not displaying then you want to make sure that you are connected
+        to the ToolCase correctly using the previous instructions and restart your app by fulling closing it and reopening it. <br>
+
+    ]]>
+    </string>
+
+
+</resources>

@@ -6,9 +6,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.RadioGroup;
 import android.widget.TextView;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
@@ -30,13 +33,10 @@ public class RangeFinder extends AppCompatActivity {
     private static final String TAG = "RangeFinder";
     private Handler handler;
 
-    private double area = 0.0;
-    private String selectedUnit = "";
+    private String currentUnit = "Ft"; // Default temperature unit
     private TextView rangeData;
-
     private double width = 0.0;
     private double length = 0.0;
-
     private double height = 0.0;
 
     private final Runnable fetchDataRunnable = new Runnable() {
@@ -53,7 +53,7 @@ public class RangeFinder extends AppCompatActivity {
                     String result = response.body().string();
                     JSONObject jsonObject = new JSONObject(result);
                     double range = jsonObject.getDouble("range");
-                    String formattedRange = "Range: " + range;
+                    String formattedRange = formatRange(range);
 
                     mainThreadHandler.post(() -> {
                         rangeData.setText(formattedRange);
@@ -78,31 +78,19 @@ public class RangeFinder extends AppCompatActivity {
         Button lengthButton = findViewById(R.id.lengthButton);
         Button heightButton = findViewById(R.id.heightButton);
         areaTextView = findViewById(R.id.areaTextView);
-        Button calcSqFeet = findViewById(R.id.calculateSquareFeet);
-        Button calcCubicFeet = findViewById(R.id.calculateCubicFeet);
-        Button calcCubicYard = findViewById(R.id.calculateCubicYard);
+        Button calcArea = findViewById(R.id.calculateArea);
+        Button calcVolume = findViewById(R.id.calculateVolume);
+        Button feetUnitButton = findViewById(R.id.newButton1);
+        Button yardUnitButton = findViewById(R.id.newButton2);
 //        RadioGroup unitRadioGroup = findViewById(R.id.unitRadioGroup);
 
         widthButton.setOnClickListener(v -> storeWidth());
         lengthButton.setOnClickListener(v -> storeLength());
         heightButton.setOnClickListener(v -> storeHeight());
-        calcSqFeet.setOnClickListener(v -> calculateSquareFeet());
-        calcCubicFeet.setOnClickListener(v -> calculateCubicFeet());
-        calcCubicYard.setOnClickListener(v -> calculateCubicYard());
-//        unitRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-//            switch (checkedId) {
-//                case R.id.squareFeetRadioButton:
-//                    selectedUnit = "Square Feet";
-//                    break;
-//                case R.id.cubicFeetRadioButton:
-//                    selectedUnit = "Cubic Feet";
-//                    break;
-//                case R.id.yardRadioButton:
-//                    selectedUnit = "Yard";
-//                    break;
-//            }
-//            updateAreaTextView(); // Update area TextView when unit is selected
-//        });
+        calcArea.setOnClickListener(v -> calculateArea());
+        calcVolume.setOnClickListener(v -> calculateVolume());
+        feetUnitButton.setOnClickListener(v -> setCurrentUnit("ft"));
+        yardUnitButton.setOnClickListener(v -> setCurrentUnit("yds"));
 
         handler = new Handler(message -> {
             if (message.what == MessageConstants.MESSAGE_READ) {
@@ -117,80 +105,108 @@ public class RangeFinder extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void storeWidth() {
-        width = Double.parseDouble(rangeData.getText().toString().split(":")[1].trim());
-        TextView widthTextView = findViewById(R.id.widthView);
-        widthTextView.setText("Width: " + width);
+        String unparsedWidth = rangeData.getText().toString();
+
+        Pattern pattern = Pattern.compile("\\d+\\.?\\d*");
+        Matcher matcher = pattern.matcher(unparsedWidth);
+
+        if (matcher.find()) {
+            String parsedWidth = matcher.group(0);
+            width = Double.parseDouble(parsedWidth);
+
+            TextView widthTextView = findViewById(R.id.widthView);
+            widthTextView.setText("Width: " + width + " " + currentUnit);
+        } else {
+            Log.e("storeWidth", "No number found in the string: " + unparsedWidth);
+        }
     }
 
     @SuppressLint("SetTextI18n")
     private void storeLength() {
-        length = Double.parseDouble(rangeData.getText().toString().split(":")[1].trim());
-        TextView lengthTextView = findViewById(R.id.lengthView);
-        lengthTextView.setText("Length: " + length);
+        String unparsedLength = rangeData.getText().toString();
+
+        Pattern pattern = Pattern.compile("\\d+\\.?\\d*");
+        Matcher matcher = pattern.matcher(unparsedLength);
+
+        if (matcher.find()) {
+            String parsedLength = matcher.group(0);
+            length = Double.parseDouble(parsedLength);
+
+            TextView lengthTextView = findViewById(R.id.lengthView);
+            lengthTextView.setText("Length: " + length + " " + currentUnit);
+        } else {
+            Log.e("storeLength", "No number found in the string: " + unparsedLength);
+        }
     }
+
 
     @SuppressLint("SetTextI18n")
     private void storeHeight() {
-        height = Double.parseDouble(rangeData.getText().toString().split(":")[1].trim());
-        TextView lengthTextView = findViewById(R.id.heightView);
-        lengthTextView.setText("Height: " + height);
+        String unparsedHeight = rangeData.getText().toString();
+
+        // Use a regex to find numbers in the string, including decimal numbers
+        Pattern pattern = Pattern.compile("\\d+\\.?\\d*");
+        Matcher matcher = pattern.matcher(unparsedHeight);
+
+        // Check if a number is found
+        if (matcher.find()) {
+            // Extract the first match which should be your number
+            String parsedHeight = matcher.group(0);
+
+            // Convert the extracted string to double
+            height = Double.parseDouble(parsedHeight);
+
+            // Set the extracted number to the TextView
+            TextView lengthTextView = findViewById(R.id.heightView);
+            lengthTextView.setText("Height: " + height + " " + currentUnit);
+        } else {
+            // Handle the case where the number is not found
+            Log.e("storeHeight", "No number found in the string: " + unparsedHeight);
+        }
     }
 
+
     @SuppressLint({"SetTextI18n", "DefaultLocale"})
-    private void calculateSquareFeet(){
+    private void calculateArea() {
         if (width == 0.0 || length == 0.0 || height == 0.0) {
             areaTextView.setText("You must provide width and length to do calculations");
         }
-        double calculate = width * length; // Calculate area in square feet
-        area = Double.parseDouble(String.format("%.2f", calculate));
-        areaTextView.setText("Area: " + area + " " + "ft" + getResources().getString(R.string.square_symbol));
+        double calculate = width * length; // Calculate area
+        double area = Double.parseDouble(String.format("%.2f", calculate));
+        Log.d(TAG, "Area calculated" + area);
+
+        areaTextView.setText("Area: " + area + " " + currentUnit + getResources().getString(R.string.square_symbol));
     }
-    @SuppressLint({"SetTextI18n", "DefaultLocale"})
-    private void calculateCubicFeet(){
+        @SuppressLint({"SetTextI18n", "DefaultLocale"})
+    private void calculateVolume(){
         if (width == 0.0 || length == 0.0 || height == 0.0) {
             areaTextView.setText("You must provide width, length, and height to do calculations");
         }
         double calculate = width * length * height;
-        area = Double.parseDouble(String.format("%.2f", calculate)); // Calculate area in square feet
-        areaTextView.setText("Area: " + area + " " + "ft" + getResources().getString(R.string.cubic_symbol));
+        double volume = Double.parseDouble(String.format("%.2f", calculate)); // Calculate area in square feet
+        areaTextView.setText("Volume: " + volume + " " + currentUnit + getResources().getString(R.string.cubic_symbol));
     }
 
-    @SuppressLint({"SetTextI18n", "DefaultLocale"})
-    private void calculateCubicYard(){
-        if (width == 0.0 || length == 0.0 || height == 0.0) {
-            areaTextView.setText("You must provide width, length, and height to do calculations");
+    @SuppressLint("SetTextI18n")
+    private void setCurrentUnit(@NonNull String unit) {
+        currentUnit = unit;
+        fetchDataRunnable.run(); // Re-run fetchDataRunnable to update temperature with new unit
+    }
+
+    private String formatRange(double range) {
+        if (currentUnit.equals("yds")) {
+            return String.format("Range: %.2f yds", feetToYards(range));
         }
-        double calculate = (width * length * height) / 27;
-        area = Double.parseDouble(String.format("%.2f", calculate)); // Calculate area in square feet
-        areaTextView.setText("Area: " + area + " " + "yd" + getResources().getString(R.string.cubic_symbol));
+        return String.format("Range: %.2f ft", range);
+        //if (currentUnit.equals("yds")) {
+        //    return "Range: " + feetToYards(range) + " yds";
+        //}
+        //return "Range: " + range + " ft";
     }
 
-
-
-//    @SuppressLint("SetTextI18n")
-//    private void updateAreaTextView() {
-//        // Check if width and length (and height for cubic feet or yard) are available
-//        if (width != 0 && length != 0 && (selectedUnit.equals("Square Feet") || (selectedUnit.equals("Cubic Feet") || selectedUnit.equals("Yard")) && height != 0)) {
-//            // Calculate area based on selected unit
-//            switch (selectedUnit) {
-//                case "Square Feet":
-//                    area = width * length; // Calculate area in square feet
-//                    areaTextView.setText("Area: " + area + " " + getResources().getString(R.string.square_feet_symbol)); // Update area TextView with square feet symbol
-//                    break;
-//                case "Cubic Feet":
-//                    area = width * length * height; // Calculate area in cubic feet
-//                    areaTextView.setText("Area: " + area + " " + getResources().getString(R.string.cubic_feet_symbol));
-//                    break;
-//                case "Yard":
-//                    area = width * length * height / 27; // Calculate area in yards (assuming height in feet)
-//                    areaTextView.setText("Area: " + area + " " + getResources().getString(R.string.yard_symbol)); // Update area TextView with yard symbol
-//                    break;
-//            }
-//        } else {
-//            // Display a message indicating that all dimensions are required
-//            areaTextView.setText("Please provide width, length" + (selectedUnit.equals("Cubic Feet") || selectedUnit.equals("Yard") ? ", and height" : "") + " to calculate area.");
-//        }
-//    }
+    private double feetToYards(double range) {
+        return (range / 3);
+    }
 
     private interface MessageConstants {
         int MESSAGE_READ = 0;

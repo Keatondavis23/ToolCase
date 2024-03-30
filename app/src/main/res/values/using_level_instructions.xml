@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="using_level_instructions">
+    <![CDATA[
+        <b>How to use the Level:</b><br>
+        1. By default, the level will auto-change the type of level that you are using based on the orientation of your phone.
+        It will auto-change at about a 45 degree angle.If you wish to change this go into the settings tab in the upper right hand
+        conner and change the Locking option to on. After this go back to the level screen and get to the level you want to use and
+        tap at the top of the screen to lock that level as the one to use. <br>
+        2. You can turn the angle values on and off in the settings as well as switch it from angle to inclinations. <br>
+        3. You can change the viscosity of the fluid in the level to make it more or less sensitive in the settings as well. You
+        have the options of low, medium, or high. It is set to medium by default.<br>
+        4.If the level does not feel that it is calibrated correctly, you can recalibrate it by pressing the calibration button to
+        the left of the settings button. Follow the on screen instructions to finish the calibration.<br>
+
+    ]]>
+    </string>
+
+
+</resources>

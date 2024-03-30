@@ -18,7 +18,7 @@ public class MessagesActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
 
-        String[] messages = new String[] { "Connecting to Case", "Displaying Data", "Troubleshooting", "Message 4" };
+        String[] messages = new String[] { "Connecting to Case", "Displaying Data", "Using Level", "Using Thermometer", "Using Range Finder" };
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages));
     }
 
@@ -26,24 +26,97 @@ public class MessagesActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         String item = (String) getListAdapter().getItem(position);
-        if ("Troubleshooting".equals(item)) {
-            showTroubleshootingInstructions();
-        } else {
+        if ("Connecting to Case".equals(item)) {
+            showConnectingToCaseInstructions();
+        }
+        else if ("Displaying Data".equals(item)) {
+            showDisplayingDataInstructions();
+        }
+        else if ("Using Level".equals(item)) {
+            showUsingLevelInstructions();
+        }
+        else if ("Using Thermometer".equals(item)) {
+            showUsingThermometerInstructions();
+        }
+        else if ("Using Range Finder".equals(item)) {
+            showUsingRangeFinderInstructions();
+        }
+        else {
             Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
         }
     }
 
-    private void showTroubleshootingInstructions() {
-        Spanned troubleshootingText;
+    private void showConnectingToCaseInstructions() {
+        Spanned ConnectingToCaseText;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            troubleshootingText = Html.fromHtml(getString(R.string.troubleshooting_instructions), Html.FROM_HTML_MODE_COMPACT);
+            ConnectingToCaseText = Html.fromHtml(getString(R.string.connecting_to_case_instructions), Html.FROM_HTML_MODE_COMPACT);
         } else {
-            troubleshootingText = Html.fromHtml(getString(R.string.troubleshooting_instructions));
+            ConnectingToCaseText = Html.fromHtml(getString(R.string.connecting_to_case_instructions));
         }
 
         new AlertDialog.Builder(this)
-                .setTitle("Troubleshooting Instructions")
-                .setMessage(troubleshootingText)
+                .setTitle("Connecting To Case Instructions")
+                .setMessage(ConnectingToCaseText)
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
+    }
+
+    private void showDisplayingDataInstructions() {
+        Spanned displayingDataText;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            displayingDataText = Html.fromHtml(getString(R.string.displaying_data_instructions), Html.FROM_HTML_MODE_COMPACT);
+        } else {
+            displayingDataText = Html.fromHtml(getString(R.string.displaying_data_instructions));
+        }
+
+        new AlertDialog.Builder(this)
+                .setTitle("Connecting To Case Instructions")
+                .setMessage(displayingDataText)
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
+    }
+
+    private void showUsingLevelInstructions() {
+        Spanned UsingLevelText;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            UsingLevelText = Html.fromHtml(getString(R.string.using_level_instructions), Html.FROM_HTML_MODE_COMPACT);
+        } else {
+            UsingLevelText = Html.fromHtml(getString(R.string.using_level_instructions));
+        }
+
+        new AlertDialog.Builder(this)
+                .setTitle("Level Instructions")
+                .setMessage(UsingLevelText)
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
+    }
+
+    private void showUsingThermometerInstructions() {
+        Spanned UsingThermometerText;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            UsingThermometerText = Html.fromHtml(getString(R.string.using_thermometer_instructions), Html.FROM_HTML_MODE_COMPACT);
+        } else {
+            UsingThermometerText = Html.fromHtml(getString(R.string.using_thermometer_instructions));
+        }
+
+        new AlertDialog.Builder(this)
+                .setTitle("Thermometer Instructions")
+                .setMessage(UsingThermometerText)
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
+    }
+
+    private void showUsingRangeFinderInstructions() {
+        Spanned UsingRangeFinderText;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            UsingRangeFinderText = Html.fromHtml(getString(R.string.using_range_finder_instructions), Html.FROM_HTML_MODE_COMPACT);
+        } else {
+            UsingRangeFinderText = Html.fromHtml(getString(R.string.using_range_finder_instructions));
+        }
+
+        new AlertDialog.Builder(this)
+                .setTitle("Range Finder Instructions")
+                .setMessage(UsingRangeFinderText)
                 .setPositiveButton(android.R.string.ok, null)
                 .show();
     }

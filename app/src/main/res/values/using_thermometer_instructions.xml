@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="using_thermometer_instructions">
+    <![CDATA[
+        <b>How to use the Thermometer:</b><br>
+        1. Select the unit of temperature you would like to use. If no unit is selected it will default to Fahrenheit. <br>
+        *Be aware it can take up to 5 seconds for the unit of measurement to change on screen*<br>
+    ]]>
+    </string>
+
+
+</resources>

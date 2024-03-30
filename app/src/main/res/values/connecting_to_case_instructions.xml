@@ -7,10 +7,16 @@
         2. Makes sure that the case is switched on and has batteries in it.<br>
         3. Open your Wi-fi menu to select the "ToolCase" Wi-fi network and enter the password.<br>
         4. Wait for the status inside the app to say "Connected to ToolCase".<br>
-        If you encounter issues, restart your device and try again.
+        If you encounter issues, restart your device and try again.<br>
+        <br>
+        <b>TroubleShooting</b><br>
+        <br>
+        <b>Wi-fi network "ToolCase" does not appear:</b><br>
+        If the "ToolCase" Network does not appear in your wifi fie network here are a couple things you may want to try: <br>
+        1. Try turning the ToolCase off and on again.<br>
+        2. Replace the batteries in the ToolCase.<br>
+        3. Restart your phone.<br>
 
-        <b>TroubleShooting:</b><br>
-        Wi-fi network "ToolCase" does not appear.
     ]]>
     </string>
 

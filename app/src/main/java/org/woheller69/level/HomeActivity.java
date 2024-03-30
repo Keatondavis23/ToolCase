@@ -90,10 +90,10 @@ public class HomeActivity extends AppCompatActivity {
             String connectedSSID = wifiManager.getConnectionInfo().getSSID().replace("\"", "");
             //Log.d(TAG, "Result: " + connectedSSID);
             if ("Pico-W-AP".equals(connectedSSID)) {
-                wifiStatusTextView.setText("Status: Connected to PhoneCase");
+                wifiStatusTextView.setText("Status: Connected to ToolCase");
                 wifiStatusTextViewBox.setBackgroundColor(getResources().getColor(R.color.green));
             } else {
-                wifiStatusTextView.setText("Status: Not Connected to PhoneCase");
+                wifiStatusTextView.setText("Status: Not Connected to ToolCase");
                 wifiStatusTextViewBox.setBackgroundColor(getResources().getColor(R.color.red));
             }
         } else {

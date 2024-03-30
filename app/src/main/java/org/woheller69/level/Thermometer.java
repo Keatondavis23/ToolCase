@@ -28,7 +28,7 @@ public class Thermometer extends AppCompatActivity {
     private static final String TAG = "Thermometer";
     private Handler handler;
     private TextView tempData;
-    private String currentUnit = "Celsius"; // Default temperature unit
+    private String currentUnit = "Fahrenheit"; // Default temperature unit
 
     private final Runnable fetchDataRunnable = new Runnable() {
         @Override
