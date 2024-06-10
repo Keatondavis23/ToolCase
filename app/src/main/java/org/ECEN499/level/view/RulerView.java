@@ -1,4 +1,4 @@
-package org.woheller69.level.view;
+package org.ECEN499.level.view;
 
 // taken from https://github.com/SecUSo/privacy-friendly-ruler, published under GPL3.0 license
 
@@ -9,7 +9,7 @@ import android.graphics.Path;
 import android.view.View;
 
 import androidx.core.content.ContextCompat;
-import org.woheller69.level.R;
+import org.ECEN499.level.R;
 
 public class RulerView extends View {
 

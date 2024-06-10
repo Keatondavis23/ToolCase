@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.woheller69.level">
+    package="org.ECEN499.level">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -8,15 +8,24 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-feature android:name="android.hardware.location.gps" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+
+
 
 
 
     <uses-feature
         android:name="android.hardware.sensor.accelerometer"
         android:required="true" />
+    <uses-feature
+        android:name="android.hardware.bluetooth" />
+
 
     <application
-        android:name=".LevelApp"
+        android:name="org.ECEN499.level.LevelApp"
         android:allowBackup="true"
         android:theme="@style/LevelTheme"
         android:icon="@mipmap/ic_launcher"
@@ -25,7 +34,7 @@
 
         <!-- New Home Activity -->
         <activity
-            android:name=".HomeActivity"
+            android:name="org.ECEN499.level.HomeActivity"
             android:label="Tool Case"
             android:exported="true"> <!-- This line is added -->
             <intent-filter>
@@ -37,21 +46,21 @@
 
         <!-- Level Activity without the LAUNCHER category -->
         <activity
-            android:name="org.woheller69.level.Level"
+            android:name="org.ECEN499.level.Level"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:exported="false"> <!-- This line is added/updated -->
             <!-- No intent-filter here -->
         </activity>
-        <activity android:name=".RangeFinder" />
-        <activity android:name=".Thermometer" />
-        <activity android:name=".MessagesActivity" />
+        <activity android:name="org.ECEN499.level.RangeFinder" />
+        <activity android:name="org.ECEN499.level.Thermometer" />
+        <activity android:name="org.ECEN499.level.MessagesActivity" />
 
         <!-- Settings Activity -->
         <activity
-            android:name=".SettingsActivity"
+            android:name="org.ECEN499.level.SettingsActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".HomeActivity" /> <!-- Updated parentActivityName -->
+            android:parentActivityName="org.ECEN499.level.HomeActivity" /> <!-- Updated parentActivityName -->
 
     </application>
 

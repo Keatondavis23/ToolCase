@@ -1,5 +1,5 @@
-// java/org/woheller69/level/MessagesActivity.java
-package org.woheller69.level;
+// java/org/ECEN499/level/MessagesActivity.java
+package org.ECEN499.level;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;

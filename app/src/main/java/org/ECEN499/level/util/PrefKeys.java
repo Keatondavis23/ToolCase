@@ -1,6 +1,6 @@
-package org.woheller69.level.util;
+package org.ECEN499.level.util;
 
-import org.woheller69.level.R;
+import org.ECEN499.level.R;
 
 public class PrefKeys {
     public static final int PREF_SHOW_ANGLE = R.string.prefKey_showAngle;

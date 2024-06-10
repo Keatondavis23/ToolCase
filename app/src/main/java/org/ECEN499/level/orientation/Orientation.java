@@ -1,4 +1,4 @@
-package org.woheller69.level.orientation;
+package org.ECEN499.level.orientation;
 
 /*
  *  This file is part of Level (an Android Bubble Level).

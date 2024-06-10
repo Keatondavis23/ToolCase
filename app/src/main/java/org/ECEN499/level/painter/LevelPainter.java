@@ -1,4 +1,4 @@
-package org.woheller69.level.painter;
+package org.ECEN499.level.painter;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -11,10 +11,10 @@ import android.view.SurfaceHolder;
 
 import androidx.core.content.ContextCompat;
 
-import org.woheller69.level.Level;
-import org.woheller69.level.R;
-import org.woheller69.level.orientation.Orientation;
-import org.woheller69.level.util.PreferenceHelper;
+import org.ECEN499.level.Level;
+import org.ECEN499.level.R;
+import org.ECEN499.level.orientation.Orientation;
+import org.ECEN499.level.util.PreferenceHelper;
 
 import java.text.DecimalFormat;
 

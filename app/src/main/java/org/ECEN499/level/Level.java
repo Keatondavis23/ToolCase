@@ -1,4 +1,4 @@
-package org.woheller69.level;
+package org.ECEN499.level;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -28,13 +28,13 @@ import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
-import org.woheller69.level.orientation.OrientationListener;
-import org.woheller69.level.orientation.Orientation;
-import org.woheller69.level.orientation.OrientationProvider;
-import org.woheller69.level.util.PreferenceHelper;
-import org.woheller69.level.view.LevelView;
-import org.woheller69.level.view.RulerView;
-import org.woheller69.level.view.VerticalSeekBar;
+import org.ECEN499.level.orientation.OrientationListener;
+import org.ECEN499.level.orientation.Orientation;
+import org.ECEN499.level.orientation.OrientationProvider;
+import org.ECEN499.level.util.PreferenceHelper;
+import org.ECEN499.level.view.LevelView;
+import org.ECEN499.level.view.RulerView;
+import org.ECEN499.level.view.VerticalSeekBar;
 
 /*
  *  This file is part of Level (an Android Bubble Level).
