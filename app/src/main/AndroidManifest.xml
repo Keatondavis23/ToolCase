@@ -8,14 +8,12 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-feature android:name="android.hardware.location.gps" />
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
-
-
-
-
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <!-- Request legacy Bluetooth permissions on older devices. -->
+    <uses-permission android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
 
     <uses-feature
         android:name="android.hardware.sensor.accelerometer"
@@ -23,46 +21,50 @@
     <uses-feature
         android:name="android.hardware.bluetooth" />
 
-
     <application
         android:name="org.ECEN499.level.LevelApp"
         android:allowBackup="true"
         android:theme="@style/LevelTheme"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/name"
+
         android:networkSecurityConfig="@xml/network_security_config">
 
-        <!-- New Home Activity -->
+
+        <!-- MainActivity -->
         <activity
-            android:name="org.ECEN499.level.HomeActivity"
+            android:name=".MainActivity"
             android:label="Tool Case"
             android:exported="true"> <!-- This line is added -->
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
 
-
-        <!-- Level Activity without the LAUNCHER category -->
+        <!-- Home Activity -->
         <activity
-            android:name="org.ECEN499.level.Level"
-            android:hardwareAccelerated="true"
-            android:screenOrientation="portrait"
-            android:exported="false"> <!-- This line is added/updated -->
+            android:name=".HomeActivity"
+            android:exported="true"> <!-- This line is added -->
             <!-- No intent-filter here -->
         </activity>
-        <activity android:name="org.ECEN499.level.RangeFinder" />
-        <activity android:name="org.ECEN499.level.Thermometer" />
-        <activity android:name="org.ECEN499.level.MessagesActivity" />
+
+        <!-- Other Activities -->
+        <activity android:name=".Level" />
+        <activity android:name=".RangeFinder" />
+        <activity android:name=".Thermometer" />
+        <activity android:name=".MessagesActivity" />
 
         <!-- Settings Activity -->
         <activity
-            android:name="org.ECEN499.level.SettingsActivity"
+            android:name=".SettingsActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName="org.ECEN499.level.HomeActivity" /> <!-- Updated parentActivityName -->
+            android:parentActivityName=".HomeActivity" /> <!-- Updated parentActivityName -->
 
     </application>
 
 </manifest>
+
 

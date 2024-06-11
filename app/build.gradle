@@ -34,6 +34,7 @@ android {
     packagingOptions {
         exclude 'META-INF/*'
     }
+    namespace 'org.ECEN499.level'
 }
 
 dependencies {
@@ -43,4 +44,12 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1" //needed due to duplicate class error
     implementation "androidx.cardview:cardview:1.0.0" // cardview dependency
     implementation 'com.squareup.okhttp3:okhttp:4.9.2' // Check for the latest version on the OkHttp GitHub
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.8'
 }

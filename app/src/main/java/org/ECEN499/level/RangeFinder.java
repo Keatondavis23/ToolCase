@@ -167,31 +167,31 @@ public class RangeFinder extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void storeHeight() {
-            if (isManualInput) {
-                promptForManualInput("Height");
+        if (isManualInput) {
+            promptForManualInput("Height");
+        } else {
+            String unparsedHeight = rangeData.getText().toString();
+
+            // Use a regex to find numbers in the string, including decimal numbers
+            Pattern pattern = Pattern.compile("\\d+\\.?\\d*");
+            Matcher matcher = pattern.matcher(unparsedHeight);
+
+            // Check if a number is found
+            if (matcher.find()) {
+                // Extract the first match which should be your number
+                String parsedHeight = matcher.group(0);
+
+                // Convert the extracted string to double
+                height = Double.parseDouble(parsedHeight);
+
+                // Set the extracted number to the TextView
+                TextView lengthTextView = findViewById(R.id.heightView);
+                lengthTextView.setText("Height: " + height + " " + currentUnit);
             } else {
-                String unparsedHeight = rangeData.getText().toString();
-
-                // Use a regex to find numbers in the string, including decimal numbers
-                Pattern pattern = Pattern.compile("\\d+\\.?\\d*");
-                Matcher matcher = pattern.matcher(unparsedHeight);
-
-                // Check if a number is found
-                if (matcher.find()) {
-                    // Extract the first match which should be your number
-                    String parsedHeight = matcher.group(0);
-
-                    // Convert the extracted string to double
-                    height = Double.parseDouble(parsedHeight);
-
-                    // Set the extracted number to the TextView
-                    TextView lengthTextView = findViewById(R.id.heightView);
-                    lengthTextView.setText("Height: " + height + " " + currentUnit);
-                } else {
-                    // Handle the case where the number is not found
-                    Log.e("storeHeight", "No number found in the string: " + unparsedHeight);
-                }
+                // Handle the case where the number is not found
+                Log.e("storeHeight", "No number found in the string: " + unparsedHeight);
             }
+        }
     }
 
     private void updateDimensionView(int textViewId, String dimension, double value) {
@@ -211,7 +211,7 @@ public class RangeFinder extends AppCompatActivity {
 
         areaTextView.setText("Area: " + area + " " + currentUnit + getResources().getString(R.string.square_symbol));
     }
-        @SuppressLint({"SetTextI18n", "DefaultLocale"})
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
     private void calculateVolume(){
         if (width == 0.0 || length == 0.0 || height == 0.0) {
             areaTextView.setText("You must provide width, length, and height to do calculations");
@@ -277,4 +277,3 @@ public class RangeFinder extends AppCompatActivity {
         int MESSAGE_READ = 0;
     }
 }
-

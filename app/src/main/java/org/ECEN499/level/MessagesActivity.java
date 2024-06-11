@@ -1,4 +1,3 @@
-// java/org/ECEN499/level/MessagesActivity.java
 package org.ECEN499.level;
 
 import android.app.AlertDialog;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.text.Html;
 
 public class MessagesActivity extends ListActivity {
     @Override
