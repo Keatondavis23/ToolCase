@@ -1,7 +1,6 @@
 package org.ECEN499.level;
 
 import android.Manifest;
-import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,17 +8,18 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.Window;
 import android.widget.ImageView;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-public class HomeActivity extends AppCompatActivity {
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+public class HomeActivity extends AppCompatActivity {
 
     private static final String TAG = "HomePage";
     private final BroadcastReceiver wifiStateReceiver = new BroadcastReceiver() {
@@ -28,7 +28,6 @@ public class HomeActivity extends AppCompatActivity {
             updateBluetoothStatus(); // Method to update WiFi status in the UI
         }
     };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +44,21 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        ImageView btconnect = findViewById(R.id.btconnect);
+        btconnect.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
+
         ImageView buttonRangeFinder = findViewById(R.id.button_range_finder);
         buttonRangeFinder.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, RangeFinder.class);
+            startActivity(intent);
+        });
+
+        ImageView laserbutton = findViewById(R.id.laserbutton);
+        laserbutton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, Laser.class);
             startActivity(intent);
         });
 
@@ -61,6 +72,29 @@ public class HomeActivity extends AppCompatActivity {
         messagesButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, MessagesActivity.class);
             startActivity(intent);
+        });
+
+        // Setup BottomNavigationView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_laser:
+                        startActivity(new Intent(HomeActivity.this, Laser.class));
+                        return true;
+                    case R.id.nav_thermometer:
+                        startActivity(new Intent(HomeActivity.this, Thermometer.class));
+                        return true;
+                    case R.id.nav_range_finder:
+                        startActivity(new Intent(HomeActivity.this, RangeFinder.class));
+                        return true;
+                    case R.id.nav_menu:
+                        startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+                        return true;
+                }
+                return false;
+            }
         });
 
         // Request fine location permission which is required for accessing WiFi SSID on newer Android versions
@@ -88,27 +122,10 @@ public class HomeActivity extends AppCompatActivity {
         unregisterReceiver(wifiStateReceiver);
     }
 
-
-
-
     private void updateBluetoothStatus() {
-        TextView wifiStatusTextView = findViewById(R.id.wifiStatusTextView);
-        CardView wifiStatusTextViewBox = findViewById(R.id.wifiStatusTextViewBox);
 
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (bluetoothAdapter != null) {
-            if (bluetoothAdapter.isEnabled()) {
-                // Bluetooth is enabled
-                wifiStatusTextView.setText("Bluetooth Connected"); // Change text
-                wifiStatusTextViewBox.setBackgroundColor(getResources().getColor(R.color.green)); // Change background color
-            } else {
-                // Bluetooth is disabled
-                wifiStatusTextView.setText("Bluetooth Not Connected"); // Change text
-                wifiStatusTextViewBox.setBackgroundColor(getResources().getColor(R.color.red)); // Change background color
-            }
-
-        }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

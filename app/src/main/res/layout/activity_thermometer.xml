@@ -9,9 +9,22 @@
     <View
         android:id="@+id/top_view"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/bg_view"
-        />
+        android:layout_height="80dp"
+        android:background="@drawable/bg_view" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_alignBottom="@+id/top_view"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="Thermometer"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/temperatureJSONData"
@@ -26,47 +39,50 @@
         android:layout_below="@+id/top_view"/>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_below="@id/temperatureJSONData"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/celsiusButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Celsius"
-            android:textSize="16sp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:elevation="4dp"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
-            android:layout_marginEnd="8dp"
-            android:elevation="4dp"
-            android:layout_marginRight="8dp" />
+            android:text="Celsius"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/fahrenheitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fahrenheit"
-            android:textSize="16sp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:elevation="4dp"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
-            android:layout_marginEnd="8dp"
-            android:elevation="4dp"
-            android:layout_marginRight="8dp" />
+            android:text="Fahrenheit"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Temperature"
-        android:textColor="@color/white"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_alignParentBottom="true"
+        android:background="@color/blue"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_navigation_menu" />
+
 
 </RelativeLayout>

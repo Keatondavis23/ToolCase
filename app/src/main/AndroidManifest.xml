@@ -34,8 +34,7 @@
         <activity
             android:name=".MainActivity"
             android:label="Tool Case"
-            android:exported="true"> <!-- This line is added -->
-
+            android:exported="true"> <!-- This line is added -->\
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,8 +47,11 @@
         <activity
             android:name=".HomeActivity"
             android:exported="true"> <!-- This line is added -->
+
             <!-- No intent-filter here -->
         </activity>
+
+
 
         <!-- Other Activities -->
         <activity android:name=".Level" />
@@ -63,6 +65,10 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".HomeActivity" /> <!-- Updated parentActivityName -->
 
+        <activity
+            android:name=".Laser"
+            android:exported="true"> <!-- Ensure exported="true" if the activity needs to be accessible from outside the app -->
+        </activity>
     </application>
 
 </manifest>

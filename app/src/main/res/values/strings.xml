@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="unit_array">
+        <item>Feet</item>
+        <item>Inches</item>
+        <item>Yards</item>
+        <item>Centimeters</item>
+        <item>Meters</item>
+    </string-array>
     <string name="name">Tool Case</string>
     <string name="reset">Reset</string>
     <string name="not_supported">Orientation not supported</string>

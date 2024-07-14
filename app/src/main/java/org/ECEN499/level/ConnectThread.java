@@ -1,5 +1,6 @@
 package org.ECEN499.level;
 
+
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -17,6 +18,7 @@ public class ConnectThread extends Thread {
     private static final String TAG = "FrugalLogs";
     public static Handler handler;
     private final static int ERROR_READ = 0;
+    private ConnectedThread connectedThread;
 
     @SuppressLint("MissingPermission")
     public ConnectThread(BluetoothDevice device, UUID MY_UUID, Handler handler) {
@@ -66,6 +68,9 @@ public class ConnectThread extends Thread {
         } catch (IOException e) {
             Log.e(TAG, "Could not close the client socket", e);
         }
+    }
+    public boolean isConnected() {
+        return mmSocket.isConnected();
     }
 
     public BluetoothSocket getMmSocket(){

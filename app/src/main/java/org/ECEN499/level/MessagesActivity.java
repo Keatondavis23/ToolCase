@@ -2,6 +2,7 @@ package org.ECEN499.level;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MessagesActivity extends ListActivity {
     @Override
@@ -18,6 +21,27 @@ public class MessagesActivity extends ListActivity {
 
         String[] messages = new String[] { "Connecting to Case", "Displaying Data", "Using Level", "Using Thermometer", "Using Range Finder" };
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages));
+        // Setup BottomNavigationView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nav_laser:
+                    startActivity(new Intent(MessagesActivity.this, Laser.class));
+                    return true;
+                case R.id.nav_thermometer:
+                    startActivity(new Intent(MessagesActivity.this, Thermometer.class));
+                    return true;
+                case R.id.nav_range_finder:
+                    startActivity(new Intent(MessagesActivity.this, RangeFinder.class));
+                    return true;
+                case R.id.nav_menu:
+                    startActivity(new Intent(MessagesActivity.this, HomeActivity.class));
+                    return true;
+            }
+            return false;
+        });
+
+
     }
 
     @SuppressWarnings("deprecation")

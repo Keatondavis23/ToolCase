@@ -32,4 +32,5 @@
     <color name="display_border">#FF333333</color>
     <color name="display_dark">@color/black</color>
     <color name="display_reflect">@color/black_reflect</color>
+    <color name="gray">#00F44336</color>
 </resources>

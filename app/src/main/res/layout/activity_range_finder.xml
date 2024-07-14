@@ -9,41 +9,30 @@
     <View
         android:id="@+id/top_view"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/bg_view"
-        />
+        android:layout_height="80dp"
+        android:background="@drawable/bg_view" />
 
-    <LinearLayout
-        android:id="@+id/btn_layout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignBottom="@+id/top_view"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="Range Finder"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/unitSpinner"
+        android:layout_width="261dp"
+        android:layout_height="56dp"
         android:layout_below="@id/top_view"
-        android:gravity="center">
-
-        <!-- New Button 1 -->
-        <Button
-            android:id="@+id/newButton1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Feet"
-            android:textSize="16sp"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="25dp"/>
-
-        <!-- New Button 2 -->
-        <Button
-            android:id="@+id/newButton2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Yards"
-            android:textSize="16sp"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="25dp"/>
-    </LinearLayout>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/rangeFinderJSONData"
@@ -55,40 +44,37 @@
         android:text="Range: --"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="20sp"
-        android:layout_below="@+id/btn_layout1"/>
+        android:layout_below="@id/unitSpinner" />
 
     <TextView
         android:id="@+id/widthView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:text="Width: "
         android:textSize="20sp"
-        android:layout_below="@+id/rangeFinderJSONData"/>
+        android:layout_below="@id/rangeFinderJSONData" />
 
     <TextView
         android:id="@+id/lengthView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:text="Length: "
         android:textSize="20sp"
-        android:layout_below="@+id/widthView" />
+        android:layout_below="@id/widthView" />
 
     <TextView
         android:id="@+id/heightView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:text="Height: "
         android:textSize="20sp"
-        android:layout_below="@+id/lengthView" />
+        android:layout_below="@id/lengthView" />
 
     <TextView
         android:id="@+id/areaTextView"
@@ -97,7 +83,6 @@
         android:layout_below="@id/heightView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="12dp"
         android:text="Area: "
         android:textSize="20sp" />
 
@@ -106,8 +91,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_below="@id/areaTextView"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/areaTextView"
         android:gravity="center">
 
         <Button
@@ -115,38 +100,36 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:text="@string/width"
-            android:textSize="16sp"
-            android:layout_marginRight="8dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/lengthButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:text="@string/length"
-            android:textSize="16sp"
-            android:layout_marginRight="8dp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/heightButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:text="@string/height"
-            android:textSize="16sp"
-            android:layout_marginRight="8dp" />
+            android:textSize="16sp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/btn_layout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_below="@id/btn_layout2"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/btn_layout2"
         android:gravity="center">
 
         <Button
@@ -154,74 +137,42 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            android:text="Calculate Area"
-            android:textSize="16sp"
+            android:layout_marginLeft="50dp"
             android:layout_marginRight="25dp"
-            android:layout_marginLeft="50dp"/>
+            android:text="Calculate Area"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/calculateVolume"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            android:text="Calculate Volume"
-            android:textSize="16sp"
+            android:layout_marginLeft="25dp"
             android:layout_marginRight="50dp"
-            android:layout_marginLeft="25dp"/>
-
+            android:text="Calculate Volume"
+            android:textSize="16sp" />
     </LinearLayout>
+
     <Switch
         android:id="@+id/manualInputSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Manual Input"
-        android:layout_below="@+id/btn_layout3"
+        android:layout_width="157dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/btn_layout3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:text="Manual Input" />
 
 
 
-    <!--    <RadioGroup-->
-<!--        android:id="@+id/unitRadioGroup"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/areaTextView"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <RadioButton-->
-<!--            android:id="@+id/squareFeetRadioButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/square_feet"/>-->
-
-<!--        <RadioButton-->
-<!--            android:id="@+id/cubicFeetRadioButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/cubic_feet"/>-->
-
-<!--        <RadioButton-->
-<!--            android:id="@+id/yardRadioButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/yard"/>-->
-<!--    </RadioGroup>-->
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/range_finder"
-        android:textColor="@color/white"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
-
-
+        android:layout_alignParentBottom="true"
+        android:background="@color/blue"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_navigation_menu" />
 
 </RelativeLayout>

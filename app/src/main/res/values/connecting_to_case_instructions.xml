@@ -3,19 +3,19 @@
     <string name="connecting_to_case_instructions">
     <![CDATA[
         <b>How to Connect to the ToolCase:</b><br>
-        1. Make sure your device\'s Wi-fi is on.<br>
-        2. Makes sure that the case is switched on and has batteries in it.<br>
-        3. Open your Wi-fi menu to select the "ToolCase" Wi-fi network and enter the password.<br>
+        1. Make sure your device\'s Bluetooth is on.<br>
+        2. Makes sure that the toolbox is switched on and has batteries in it.<br>
+        3. Open your Bluetooth menu to select the "HC-05" network and enter the password (1234).<br>
         4. Wait for the status inside the app to say "Connected to ToolCase".<br>
         If you encounter issues, restart your device and try again.<br>
         <br>
         <b>TroubleShooting</b><br>
         <br>
-        <b>Wi-fi network "ToolCase" does not appear:</b><br>
-        If the "ToolCase" Network does not appear in your wifi fie network here are a couple things you may want to try: <br>
-        1. Try turning the ToolCase off and on again.<br>
+        <b>Bluetooth network "HC-05" does not appear:</b><br>
+        If the "HC-05" Network does not appear in your bluetooth page, here are a couple things you may want to try: <br>
+        1. Try turning the Toolbox off and on again.<br>
         2. Replace the batteries in the ToolCase.<br>
-        3. Restart your phone.<br>
+        3. Restart your app and or your phone.<br>
 
     ]]>
     </string>
